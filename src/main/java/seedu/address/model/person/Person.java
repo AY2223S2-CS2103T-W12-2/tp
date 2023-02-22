@@ -120,6 +120,12 @@ public class Person {
         return builder.toString();
     }
 
+    /**
+     * Returns a new Person with all the same attributes but with the added tag.
+     *
+     * @param tag Tag to add
+     * @return the new Person with all the same attributes but with the added tag.
+     */
     public Person addNewTagImmutably(Tag tag) {
         Set<Tag> newTags = new HashSet<>(tags);
         newTags.add(tag);
