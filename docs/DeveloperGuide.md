@@ -362,9 +362,8 @@ Our implementation has some additions such as:
 ### Implementation Details
 The `list` implementation is identical to the implementation in AB3's codebase.
 // TODO sequence diagram
-### Design Consideration
-// TODO
-### \[Proposed\] Sort feature
+
+## \[Proposed\] Sort feature
 
 ### Proposed Implementation
 
