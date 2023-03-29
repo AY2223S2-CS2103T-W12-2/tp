@@ -7,6 +7,7 @@ title: Developer Guide
 TeachMeSenpai **is a student managing application** specially customised for **teaching assistants** who have a lot of
 students to keep track of. TeachMeSenpai is optimised for fast-typists with a **Command Line Interface (CLI)** with the benefits of a
 **Graphical User Interface (GUI)**.
+=======
 
 This Developer Guide provides in-depth documentation on the design and implementation consideration behind TeachMeSenpai.
 This guide covers everything you need to know from the architecture down to the feature implementation details of TeachMeSenpai.
@@ -229,16 +230,21 @@ Some additions made were the `Education`, `Subject` and `Remark` attributes. </b
 
 When adding a student entry, these were the alternatives considered.
 * **Alternative 1 (current choice):** Only `Name` has to be specified to create a `Student` entry, making the other attributes optional.
+
   * Pros:
     * Improves user convenience by allowing them to add a `Student` entry even with limited knowledge about their details.
   * Cons:
     * A lot of modification for empty/*null* inputs have to be accounted for when saving the data and testing.
+
+
 * **Alternative 2:** All parameters have to be filled in
   * Pros:
     * Easier to implement as there is lesser room for errors when dealing with empty/*null* inputs
   * Cons:
     * `add` becomes a lengthy command to execute as unnecessary additional time is needed to enter dummy values to meet the input requirements.
     * Reduces user convenience as "useful" entries that can be made are limited to students whose details are all known.
+
+[↑ Back to top](#table-of-contents)
 
 [↑ Back to top](#table-of-contents)
 
@@ -278,6 +284,8 @@ we believe that if a single invalid `INDEX` is given, the system should generate
     * Harder to implement as we have to keep track of the valid indexes to be deleted.
     * May cost the user a lot of time if an unintended `Student` entry is deleted due to the typo and additional time is
       needed to re-enter the entry or `undo` the command.
+
+[↑ Back to top](#table-of-contents)
 
 [↑ Back to top](#table-of-contents)
 
@@ -322,6 +330,7 @@ Whether a new `Student` object should be created when editing a student entry.
     * Inefficient as an entire `Student` object is created even if only one field is changed. </br>
 
 * **Alternative 2:** `edit` directly sets the updated values in the existing `Student` object.
+
   * Pros:
     * More timely option and space efficient.
   * Cons:
@@ -687,12 +696,13 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 
 1.  User request to add a new student's name and particulars.
 2.  System adds new student and their particulars as a new entry in the list
-
+    
     Use case ends
 
 **Extensions**
 
 * 1a. The given name/particulars is invalid
+
   * 1a1. System shows an error message
 
     Use case resumes from step 1.
@@ -712,18 +722,20 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 
     Use case ends
 
-
 #### Use case UC2: Find a student
 {:.no_toc}
 
 **MSS**
 
 1. User requests to find a specific set of students based on a set of criteria
+
 2. System shows a list of students that match the criteria
 
    Use case ends
 
 **Extensions**
+
+=======
 
 * 1a. The field to search in specified by the user is empty
   * 1a1. System shows an error message
@@ -741,10 +753,13 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 
     Use case resumes from step 1
 
+
 #### Use case UC3: Delete a student
 {:.no_toc}
 
 **MSS**
+
+=======
 
 1.  User requests to list students
 2.  System shows a list of students
@@ -761,15 +776,21 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
   * 1a3. System deletes the student
 
     Use case ends
+    
+=======
+
 
 * 2a. The list is empty
-
+  
   Use case ends
 
 * 3a. The given index is invalid
   * 3a1. System shows an error message
 
+
     Use case resumes at step 2
+
+=======
 
 #### Use case UC4: List student(s)
 {:.no_toc}
@@ -779,13 +800,15 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 1.  User requests to list all the students.
 2.  System shows the list of all students.
 
+=======
+
     Use case ends.
 
 **Extensions**
 
 * 1a. Additional parameters are added behind `list`.
   * 1a1. System shows an error message.
-
+    
     Use case ends.
 
 #### Use case UC5: Update remarks
@@ -801,11 +824,15 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 6. User can exit writing the remarks at any time
 7. System saves the remarks
 
+=======
+
    Use case ends
 
 **Extensions**
 
 * 2a. The list is empty
+
+=======
 
   Use case ends
 
@@ -817,10 +844,13 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 #### Use case UC6: Edit particulars
 {:.no_toc}
 
+=======
+
 **MSS**
 
 1. User requests to edit a student's particulars based on the list displayed
 2. System replaces the specified fields with the new details
+=======
 
    Use case ends
 
@@ -829,15 +859,21 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 * 1a. The field to edit is not specified
   * 1a1. System shows an error message
 
+=======
+
     Use case resumes from step 1
 
 * 1b. The index is given is invalid
   * 1b1. System shows an error message
 
+=======
+
     Use case resumes from step 1
 
 * 1c. The field is specified but the details are empty
   * 1c1. System deletes the information in the specified field
+
+=======
 
     Use case ends
 
@@ -849,6 +885,7 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 1. User requests to exit the application
 2. System saves all data into a local file
 3. System exits from the application
+=======
 
    Use case ends
 
@@ -918,9 +955,14 @@ testers are expected to do more *exploratory* testing.
      Expected: Similar to previous.
 
 [↑ Back to top](#table-of-contents)
+=======
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
+
   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+=======
