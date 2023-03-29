@@ -2,11 +2,24 @@
 layout: page
 title: Developer Guide
 ---
+## **About TeachMeSenpai**
+
+TeachMeSenpai **is a student managing application** specially customised for **teaching assistants** who have a lot of
+students to keep track of. TeachMeSenpai is optimised for fast-typists with a **Command Line Interface (CLI)** with the benefits of a
+**Graphical User Interface (GUI)**.
+
+This Developer Guide provides in-depth documentation on the design and implementation consideration behind TeachMeSenpai.
+This guide covers everything you need to know from the architecture down to the feature implementation details of TeachMeSenpai.
+
+If you're eager to get started with TeachMeSenpai, head over to [Setting up, getting started](#setting-up-getting-started)!
+If you'd like to learn more about how TeachMeSenpai was implemented, you can head over to [Implementation](#implementation)!
+You may use this guide to evolve TeachMeSenpai to suit your needs.
+
 ## **Table of Contents**
 {:.no_toc}
 
 1. Table of Contents
-{:toc}
+   {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -27,7 +40,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 ### Architecture
@@ -40,7 +53,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -73,13 +86,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -90,7 +103,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -118,7 +131,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
@@ -139,7 +152,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2223S2-CS2103T-W12-2/tp/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -166,7 +179,7 @@ The implementation of the `add` command involves creating a new `Student` object
 
 Given below is a class diagram on the `Student` class and the classes related to its attributes: <br>
 
-![student_diagram](images/StudentClassDiagram.png) 
+![student_diagram](images/StudentClassDiagram.png)
 
 The `Student` object is composed of attributes:
 
@@ -181,7 +194,7 @@ The `Student` object is composed of attributes:
 
 #### Proposed Implementation
 The `add` command has the following fields:
-> NOTE : `[COMPULSORY]` indicates that the field is cannot be omitted when using `add`. 
+> NOTE : `[COMPULSORY]` indicates that the field is cannot be omitted when using `add`.
 > Unless stated as`[COMPULSORY]`, the field is optional.
 * Prefix `n/` followed by the name of the student `[COMPULSORY]`.
 * Prefix `p/` followed by the phone number of the student.
@@ -195,6 +208,8 @@ The `add` command has the following fields:
 Here is a sequence diagram showing the interactions between components when `add n/Alice edu/Primary 6` is run.: <br>
 
 ![add_sequence](images/AddSequenceDiagram.png)
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `AddCommandParser` and `AddCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
 
 #### Feature details
 1. The app will validate the parameters supplied by the user with pre-determined formats for each attribute.
@@ -203,27 +218,29 @@ Here is a sequence diagram showing the interactions between components when `add
 
 #### General Design Considerations
 
-The implementation of the attributes of a `Student` is very similar to that of a `Person` in the original AB3 codebase. 
+The implementation of the attributes of a `Student` is very similar to that of a `Person` in the original AB3 codebase.
 Hence, resulting in a similar implementation of the `add` feature. </br>
 
 Some additions made were the `Education`, `Subject` and `Remark` attributes. </br>
 1. `Education` is implemented similar to the other attributes like `Address`, but is modified to fit the logic that a student can only have one education level.
 2. `Subject` is implemented in a similar way to `Tags` in AB3 but has been modified to accomodate subject names that are more than one word long as in real life.
 3. Every attribute except`Name` has been made **OPTIONAL** to accomodate circumstances where some student's details are unknown at the time of entry.
-    * We utilised the [java.util.Optional<T>](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html "java.util.Optional<T>") class to encapsulate the optional logic of the attributes.
+  * We utilised the [java.util.Optional<T>](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html "java.util.Optional<T>") class to encapsulate the optional logic of the attributes.
 
 When adding a student entry, these were the alternatives considered.
-* **Alternative 1 (current choice):** Only `Name` has to be specified to create a `Student` entry, making the other attributes `Optional<>`.
-    * Pros:
-        * Improves user convenience by allowing them to add a `Student` entry even with limited knowledge about their details.
-    * Cons:
-        * A lot of modification for empty/*null* inputs have to be accounted for when saving the data and testing.
+* **Alternative 1 (current choice):** Only `Name` has to be specified to create a `Student` entry, making the other attributes optional.
+  * Pros:
+    * Improves user convenience by allowing them to add a `Student` entry even with limited knowledge about their details.
+  * Cons:
+    * A lot of modification for empty/*null* inputs have to be accounted for when saving the data and testing.
 * **Alternative 2:** All parameters have to be filled in
-    * Pros:
-        * Easier to implement as there is lesser room for errors when dealing with empty/*null* inputs
-    * Cons:
-        * `add` becomes a lengthy command to execute as unnecessary additional time is needed to enter dummy values to meet the input requirements.
-        * Reduces user convenience as "useful" entries that can be made are limited to students whose details are all known.
+  * Pros:
+    * Easier to implement as there is lesser room for errors when dealing with empty/*null* inputs
+  * Cons:
+    * `add` becomes a lengthy command to execute as unnecessary additional time is needed to enter dummy values to meet the input requirements.
+    * Reduces user convenience as "useful" entries that can be made are limited to students whose details are all known.
+
+[↑ Back to top](#table-of-contents)
 
 ### Delete feature
 
@@ -234,16 +251,18 @@ The `delete` implementation is identical to the implementation in AB3's codebase
 Here is a sequence diagram showing the interactions between components when `delete 1` is run.: <br>
 
 ![delete_sequence](images/DeleteSequenceDiagram2.png)
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
 
 ### Proposed Implementation
 
-The proposed `delete` implementation supports deleting multiple `Student` entries at once. For example, `delete 1 3 5` will delete the `Student` entries at indexes 1, 3 and 5 in the  `AddressBook` (Assuming indexes 1, 3 and 5 are valid). 
+The proposed `delete` implementation supports deleting multiple `Student` entries at once. For example, `delete 1 3 5` will delete the `Student` entries at indexes 1, 3 and 5 in the  `AddressBook` (Assuming indexes 1, 3 and 5 are valid).
 However, if an invalid index is given `delete 1 2 100`, none of the `Student` entries will be deleted.
 
 
 #### Design Considerations
-Taking into consideration the fact that users may make a typo, the time cost of `undo` or re-adding the deleted valid `Student` entries, 
-we believe that if a single invalid `INDEX` is given, the system should generate an error message  
+Taking into consideration the fact that users may make a typo, the time cost of `undo` or re-adding the deleted valid `Student` entries,
+we believe that if a single invalid `INDEX` is given, the system should generate an error message
 
 **Aspect: Handling invalid indexes in delete** <br>
 * **Alternative 1: (Current choice)** Delete none of the given `Student` entries, even if they are valid.
@@ -257,8 +276,10 @@ we believe that if a single invalid `INDEX` is given, the system should generate
     * Potentially save the user time editing their command if there was only a minor typo.
   * Cons:
     * Harder to implement as we have to keep track of the valid indexes to be deleted.
-    * May cost the user a lot of time if an unintended `Student` entry is deleted due to the typo and additional time is 
-    needed to re-enter the entry or `undo` the command.
+    * May cost the user a lot of time if an unintended `Student` entry is deleted due to the typo and additional time is
+      needed to re-enter the entry or `undo` the command.
+
+[↑ Back to top](#table-of-contents)
 
 ### Edit Feature
 
@@ -267,7 +288,7 @@ we believe that if a single invalid `INDEX` is given, the system should generate
 The implementation of `edit` involves creating a new `Student` object with updated details to replace the previous `Student` object.
 This is done with the help of the `EditPersonDescriptor` class, which helps create the new `Student` object.
 
-With a similar fields to the [Add feature](#add-feature), `edit` has an additional `INDEX` parameter. </br>
+`edit` has similar fields to the [Add feature](#add-feature) and an additional `INDEX` parameter. </br>
 > NOTE : `[COMPULSORY]` indicates that the field is cannot be omitted when using `add`.
 > Unless stated as`[COMPULSORY]`, the field is optional.
 * `INDEX` which represents the index number of the student to be edited in the list.
@@ -283,6 +304,9 @@ With a similar fields to the [Add feature](#add-feature), `edit` has an addition
 Here is a sequence diagram showing the interactions between components when `edit 1 n/Bob edu/Primary 5` is run.: <br>
 
 ![edit_sequence](images/EditSequenceDiagram.png)
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `EditCommandParser`, `EditCommand`, and `EditPersonDescriptor` 
+should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
 
 #### Feature details
 1. Similar to `add`, the app will validate the parameters supplied by the user with pre-determined formats for each attribute.
@@ -290,19 +314,20 @@ Here is a sequence diagram showing the interactions between components when `edi
 3. If the input passes the validation check, the corresponding `Student` is replaced by a new edited `Student` object and stored in the `AddressBook`.
 
 #### General Design Considerations
-When editing a student entry, whether a new `Student` object should be created.
+Whether a new `Student` object should be created when editing a student entry.
 * **Alternative 1 (Current choice):** `edit` will create a new `Student` object with the help of `EditPersonDescriptor`
-    * Pros:
-        * Meets the expectations of the immutable `Student` class.
-    * Cons:
-        * Inefficient as an entire `Student` object is created even if only one field is changed. </br>
+  * Pros:
+    * Meets the expectations of the immutable `Student` class.
+  * Cons:
+    * Inefficient as an entire `Student` object is created even if only one field is changed. </br>
 
-* **Alternative 2:** `edit` directly sets the updated values in the existing `Student` object directly.
-    * Pros:
-        * More timely option and space efficient.
-    * Cons:
-        * In order to execute this, `Student` cannot be immutable, this reduces the defensiveness of the program, making it more susceptible to errors.
+* **Alternative 2:** `edit` directly sets the updated values in the existing `Student` object.
+  * Pros:
+    * More timely option and space efficient.
+  * Cons:
+    * In order to execute this, `Student` cannot be immutable, this reduces the defensiveness of the program, making it more susceptible to errors.
 
+[↑ Back to top](#table-of-contents)
 
 ### Find feature
 
@@ -317,13 +342,16 @@ The reason for implementing this feature with `Predicate<Person>` is that it can
 Here is a sequence diagram showing the interactions between components when `find Alice` is run.: <br>
 
 ![find_sequence](images/FindSequenceDiagram.png)
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `FindCommandParser` and `FindCommand` 
+should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
 
 ### Feature details
 Our implementation extends from the `find` implementation in AB3 by enchancing the current `find KEYWORD`feature to `find PARTIAL_KEYWORD`.
 > Take a person's name to be `Michelle Yeoh`. <br>
 > An example of finding by `PARTIAL_KEYWORD` is using "Ye" or "miche" while `KEYWORD` would be "Michelle Yeoh". <br>
 
-Furthermore, users are also allowed to specify the field that they want to find in by using the default [prefixes](#Add-feature) given to them. 
+Furthermore, users are also allowed to specify the field that they want to find in by using the default [prefixes](#Add-feature) given to them.
 > The prefixes refer to those that the user input in the `Add` command, eg.
 > ```
 > add n/Bob p/98712345 edu/P5
@@ -340,7 +368,7 @@ This allows the user to narrow down their `find` results even more.
 #### General Design Considerations
 The implementation of `find` is built on top of the original AB3 codebase's `find` command.
 We felt that the default `find` feature was too restrictive.
- ie. `Education` or `Address`.<br>
+ie. `Education` or `Address`.<br>
 
 Our implementation has some additions such as:
 1. Allowing `PARTIAL_KEYWORD` finds so that we can accommodate for the real-life scenarios where users are not certain of the full `KEYWORD` to input for `find`.
@@ -365,6 +393,8 @@ Our implementation has some additions such as:
     * Users will not be able to search keywords for a particular attribute.
     * The resulting filtered list will span across multiple different fields, where all attributes in all fields containing the specified keyword will be displayed.
 
+[↑ Back to top](#table-of-contents)
+
 ### List feature
 
 #### Implementation Details
@@ -373,45 +403,12 @@ The `list` implementation is identical to the implementation in AB3's codebase.
 Here is a sequence diagram showing the interactions between components when `list` is run.: <br>
 
 ![list_sequence](images/ListSequenceDiagram.png)
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `ListCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
 
 #### Design Consideration
 The `list` command does not accept any arguments in order to make it as convenient for users to view their full list of students after a prior command such as `find` which displays
 a filtered list.
-
-#### \[Proposed\] Sort feature
-
-#### Proposed Implementation
-
-The proposed `sort` implementation will sort the `UniquePersonList` object, hence it will make use of: <br>
-* `sort` in [javafx.collections.FXCollections](https://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html) for the main sorting functionality.
-  * In order to sort by `Name`, the comparator will be as follows `Comparator<Name>`.
-* `comparing` in [java.util.Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html) class to execute `sort` in ascending and descending orders. <br>
-
-An example usage would be `sort ASC` to sort the list in ascending order, and `sort DESC` to sort the list in descending order.
-> `ASC` and `DESC` will not be case-sensitive, in other words, `sort ASC` and `sort asc` are both acceptable commands.
-
-**Exepected execution:**
-1. Upon entering the command `sort ASC` in the command line of the application, the list of students will be sorted in alphabetically ascending order of their `Name`.
-2. Upon entering the command `sort DESC` in the command line of the application , the list of students will be sorted in alphabetically descending order of their `Name`.
-
-#### Design Considerations:
-**Aspect: Command format:**
-* **Alternative 1:** `sort`
-  * Pros:
-    * Simpler command for users to execute
-  * Cons:
-      * Less flexible as users cannot decide which attribute to sort by.
-      * Reduces extensibility of the feature (eg. sort by subject tag is more complicated if `sort` doesn't accept inputs)
-      * Users cannot choose which order to sort in as it will be defaulted to sorting in ascending order.
-* **Alternative 2 (Current choice):** `sort ORDER`
-  * Pros:
-    * Provides extensibility of sort (eg. future implementation of `sort edu ORDER` to sort by education level)
-    * Allows users to choose the order they would like to sort the list by
-    * Gives flexibility and convenience to users.
-  * Cons:
-    * Adds complexity to the implementation as more error checking of the inputs is required.
-  
-_{more aspects to be added}_
 
 ### Remark feature
 
@@ -422,7 +419,7 @@ The current implementation provides users with two different methods of entering
 
 ##### Proposed Implementation
 
-The proposed remark mechanism will be facilitated by a pop-up text box. This will allow users to format their remarks however they like, 
+The proposed remark mechanism will be facilitated by a pop-up text box. This will allow users to format their remarks however they like,
 rather than being restricted to a single line in the command line (current implementation).
 
 #### General Design Considerations
@@ -466,11 +463,51 @@ Additionally, the command line only provides a restricted view and input option 
     * Remarks are limited to the view of `PersonCard` and size of the window.
     * Remarks that are too long will be cut off and not visible.
 
-#### Show feature
+[↑ Back to top](#table-of-contents)
+
+### \[Proposed\] Sort feature
+
+#### Proposed Implementation
+
+The proposed `sort` implementation will sort the `UniquePersonList` object, hence it will make use of: <br>
+* `sort` in [javafx.collections.FXCollections](https://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html) for the main sorting functionality.
+  * In order to sort by `Name`, the comparator will be as follows `Comparator<Name>`.
+* `comparing` in [java.util.Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html) class to execute `sort` in ascending and descending orders. <br>
+
+An example usage would be `sort ASC` to sort the list in ascending order, and `sort DESC` to sort the list in descending order.
+> `ASC` and `DESC` will not be case-sensitive, in other words, `sort ASC` and `sort asc` are both acceptable commands.
+
+**Exepected execution:**
+1. Upon entering the command `sort ASC` in the command line of the application, the list of students will be sorted in alphabetically ascending order of their `Name`.
+2. Upon entering the command `sort DESC` in the command line of the application , the list of students will be sorted in alphabetically descending order of their `Name`.
+
+#### Design Considerations:
+**Aspect: Command format:**
+* **Alternative 1:** `sort`
+  * Pros:
+    * Simpler command for users to execute
+  * Cons:
+    * Less flexible as users cannot decide which attribute to sort by.
+    * Reduces extensibility of the feature (eg. sort by subject tag is more complicated if `sort` doesn't accept inputs)
+    * Users cannot choose which order to sort in as it will be defaulted to sorting in ascending order.
+* **Alternative 2 (Current choice):** `sort ORDER`
+  * Pros:
+    * Provides extensibility of sort (eg. future implementation of `sort edu ORDER` to sort by education level)
+    * Allows users to choose the order they would like to sort the list by
+    * Gives flexibility and convenience to users.
+  * Cons:
+    * Adds complexity to the implementation as more error checking of the inputs is required.
+
+_{more aspects to be added}_
+
+
+[↑ Back to top](#table-of-contents)
+
+### Show feature
 
 #### Implementation Details
 The implementation of `show` is similar to the `list` command in the AB3 codebase. The `show` feature was implemented to support the `remark` feature. <br>
-Remarks longer than the width of `PersonListCard` in `PersonListPanel` 
+Remarks longer than the width of `PersonListCard` in `PersonListPanel`
 will not be visible. Hence, `show` allows users to view the full remark in the `ResultDisplay` since scrolling is supported.
 
 #### General Design Considerations
@@ -482,17 +519,19 @@ will not be visible. Hence, `show` allows users to view the full remark in the `
   * Cons:
     * May reduce user convenience as `show INDEX` will likely always be followed with the `list` command to toggle back to the full list of students.
     * Harder to implement as the size of the `PersonCard` for the `Student` has to be updated everytime `show` is executed.
-  
+
 * **Alternative 2: (Current choice)** Display the entire `PersonCard` of the student chosen in the `ResultDisplay`
   * Pros:
     * Supports the `remark` feature as intended since scrolling is possible.
     * Allows users to view the student details and remarks all at once.
   * Cons:
     * Harder to implement
-  
-#### \[Proposed\] Undo/redo feature
 
-##### Proposed Implementation
+[↑ Back to top](#table-of-contents)
+
+### \[Proposed\] Undo/redo feature
+
+#### Proposed Implementation
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
@@ -555,7 +594,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <img src="images/CommitActivityDiagram.png" width="250" />
 
-##### Design considerations:
+#### Design considerations:
 
 **Aspect: How undo & redo executes:**
 
@@ -570,6 +609,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
+[↑ Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -591,57 +631,61 @@ _{more aspects and alternatives to be added}_
 
 * Teaching Assistants (TAs)/tutors who have a class of students to manage and are preferably are proficient typers.
 
-**Value proposition**: 
+**Value proposition**:
 
 * TeachMeSenpai acts as an optimised app for tutors to manage their students' data, obtain insights on their students' data.
 
 ### User stories
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+**Priorities:**
 
-| Priority | As a …​  | I want to …​                                                                                                   | So that I can…​                                                             |
-|----------|----------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| `* * *`  | tutor    | open the app                                                                                                   | begin using the app                                                         |
-| `* * *`  | tutor    | close the app                                                                                                  | leave the app                                                               |
-| `* * *`  | tutor    | add a student's name                                                                                           | track a student's progress by their name                                    |
-| `* * *`  | tutor    | include student's education level when adding the student (eg. P6)                                             | keep track of a student's education level                                   |
-| `* * *`  | tutor    | include student's phone number when adding the student (eg. 94206942)                                          | keep track of a student's phone number                                      |
-| `* * *`  | tutor    | include student's email when adding the student (eg. iloveanimegirls@gmail.com)                                | keep track of a student's email                                             |
-| `* * *`  | tutor    | include student's address when adding the student (eg. Block 69 S642069)                                       | keep track of a student's address and go to the place easily                |
-| `* * *`  | tutor    | include the subjects I'm teaching a student to their entry (eg. Mathematics, English)                          | keep track of what subjects I'm teaching the student                        |
-| `* * *`  | tutor    | include optional student-specific notes when adding the student (eg. Good in Japanese)                         | store information for a particular student such as notes and remarks        |
-| `* * *`  | tutor    | include tags on a student about their noteworthy qualities (eg. active)                                        | keep track of a student's qualities.                                        |
-| `* * *`  | tutor    | delete a student entry from my list (by index)                                                                 | remove all details related to a certain student                             |
-| `* * *`  | tutor    | have my changes saved automatically                                                                            | be sure that I won't lose my changes if I crash/close the app               |
-| `* * *`  | tutor    | view my list of students                                                                                       | keep track of who I'm currently teaching                                    |
-| `* * *`  | tutor    | View the address of a student                                                                                  | know where to go if I need to provide tuition at their house                |
-| `* * *`  | tutor    | have my data persist between use sessions                                                                      | continue my session where I left off                                        |
-| `* * *`  | tutor    | find my students by searching their names                                                                      | quickly view that student's details                                         |
-| `* *`    | tutor    | filter my students by education level (eg. all P6 students)                                                    | view my students of the same education level                                |
-| `* * *`  | tutor    | edit a student's name                                                                                          | correct a student's name                                                    |
-| `* * *`  | tutor    | edit the subjects I'm teaching a particular student                                                            | update or correct a student's records                                       |
-| `* * *`  | tutor    | edit a student's education level                                                                               | update or correct a student's records                                       |
-| `* *`    | tutor    | filter my students by subjects                                                                                 | view all the student's I'm teaching a particular subject to                 |
-| `* *`    | tutor    | filter my students by address (eg. Ang Mo Kio)                                                                 | view all the students who live in a particular area                         |
-| `* *`    | tutor    | filter my students by email (eg. @gmail)                                                                       | view all the students with similar emails                                   |
-| `* *`    | tutor    | filter my students by tags (eg. active)                                                                        | view all my students with the same qualities                                |
-| `* *`    | tutor    | sort my students by their names                                                                                | view my students in a systematic manner                                     |
-| `* *`    | tutor    | sort my students by their education level                                                                      | view my students according to their education level                         | 
-| `* * *`  | new user | receieve an appropriate and user-friendly error message when I enter the wrong inputs/parameters for a command | find out the correct input/parameter format and use the feature as intended |
-| `* * *`  | new user | be able to ask for help                                                                                        | learn how to use the app                                                    |
+- **`HIGH`** _(must have)_
+- `MED` _(nice to have)_
+- _`Low`_ _(unlikely to have)_
 
+| Priority   | As a …​   | I want to …​                                                                                                    | So that I can…​                                                              |
+|:----------:|----------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **`HIGH`** | tutor    | open the app                                                                                                   | begin using the app                                                         |
+| **`HIGH`** | tutor    | close the app                                                                                                  | leave the app                                                               |
+| **`HIGH`** | tutor    | add a student's name                                                                                           | track a student's progress by their name                                    |
+| **`HIGH`** | tutor    | include student's education level when adding the student (eg. P6)                                             | keep track of a student's education level                                   |
+| **`HIGH`** | tutor    | include student's phone number when adding the student (eg. 94206942)                                          | keep track of a student's phone number                                      |
+| **`HIGH`** | tutor    | include student's email when adding the student (eg. iloveanimegirls@gmail.com)                                | keep track of a student's email                                             |
+| **`HIGH`** | tutor    | include student's address when adding the student (eg. Block 69 S642069)                                       | keep track of a student's address and go to the place easily                |
+| **`HIGH`** | tutor    | include the subjects I'm teaching a student to their entry (eg. Mathematics, English)                          | keep track of what subjects I'm teaching the student                        |
+| **`HIGH`** | tutor    | include optional student-specific notes when adding the student (eg. Good in Japanese)                         | store information for a particular student such as notes and remarks        |
+| **`HIGH`** | tutor    | include tags on a student about their noteworthy qualities (eg. active)                                        | keep track of a student's qualities.                                        |
+| **`HIGH`** | tutor    | delete a student entry from my list (by index)                                                                 | remove all details related to a certain student                             |
+| **`HIGH`** | tutor    | have my changes saved automatically                                                                            | be sure that I won't lose my changes if I crash/close the app               |
+| **`HIGH`** | tutor    | view my list of students                                                                                       | keep track of who I'm currently teaching                                    |
+| **`HIGH`** | tutor    | View the address of a student                                                                                  | know where to go if I need to provide tuition at their house                |
+| **`HIGH`** | tutor    | have my data persist between use sessions                                                                      | continue my session where I left off                                        |
+| **`HIGH`** | tutor    | find my students by searching their names                                                                      | quickly view that student's details                                         |
+| **`HIGH`** | tutor    | edit a student's name                                                                                          | correct a student's name                                                    |
+| **`HIGH`** | tutor    | edit the subjects I'm teaching a particular student                                                            | update or correct a student's records                                       |
+| **`HIGH`** | tutor    | edit a student's education level                                                                               | update or correct a student's records                                       |
+| **`HIGH`** | tutor    | receieve an appropriate and user-friendly error message when I enter the wrong inputs/parameters for a command | find out the correct input/parameter format and use the feature as intended |
+| **`HIGH`** | tutor    | be able to ask for help                                                                                        | learn how to use the app                                                    |
+|   `MED`    | tutor    | filter my students by education level (eg. all P6 students)                                                    | view my students of the same education level                                |
+|   `MED`    | tutor    | filter my students by subjects                                                                                 | view all the student's I'm teaching a particular subject to                 |
+|   `MED`    | tutor    | filter my students by address (eg. Ang Mo Kio)                                                                 | view all the students who live in a particular area                         |
+|   `MED`    | tutor    | filter my students by email (eg. @gmail)                                                                       | view all the students with similar emails                                   |
+|   `MED`    | tutor    | filter my students by tags (eg. active)                                                                        | view all my students with the same qualities                                |
+|   `MED`    | tutor    | sort my students by their names                                                                                | view my students in a systematic manner                                     |
+|   `MED`    | tutor    | sort my students by their education level                                                                      | view my students according to their education level                         |
 
+[↑ Back to top](#table-of-contents)
 
 ### Use cases
 
 For all use cases below, the **System** is the `TeachMeSenpai` app and the **Actor** is the `user`, unless specified otherwise.
 
-**Use case UC1: Add a student**
+#### Use case UC1: Add a student
+{:.no_toc}
 
 **MSS**
 
 1.  User request to add a new student's name and particulars.
-
 2.  System adds new student and their particulars as a new entry in the list
 
     Use case ends
@@ -649,72 +693,106 @@ For all use cases below, the **System** is the `TeachMeSenpai` app and the **Act
 **Extensions**
 
 * 1a. The given name/particulars is invalid
+  * 1a1. System shows an error message
 
-    * 1a1. System shows an error message
-
-      Use case resumes from step 1.
+    Use case resumes from step 1.
 
 * 1b. The compulsory name field is missing
+  * 1a1. System shows an error message
 
-    * 1a1. System shows an error message
-
-      Use case resumes from step 1.
+    Use case resumes from step 1.
 
 * 1c. A student entry with the same name exists in the list
+  * 1c1. System shows an error message
 
-    * 1c1. System shows an error message
-
-      Use case resumes from step 1.
+    Use case resumes from step 1.
 
 * 1d. Some optional particulars are missing
+  * 1d1. System adds new student, leaving their particulars blank
 
-    * 1d1. System adds new student, leaving their particulars blank
+    Use case ends
 
-      Use case ends
-  
-**Use case UC2: Delete a student**
+
+#### Use case UC2: Find a student
+{:.no_toc}
+
+**MSS**
+
+1. User requests to find a specific set of students based on a set of criteria
+2. System shows a list of students that match the criteria
+
+   Use case ends
+
+**Extensions**
+
+* 1a. The field to search in specified by the user is empty
+  * 1a1. System shows an error message
+
+    Use case resumes from step 1.
+
+* 1b. The field to search in is not specified by the user
+  * 1b1. System defaults to searching the keyword in the name field
+  * 1b2. System shows a list of students whose names match the keyword
+
+    Use case ends
+
+* 1c. The field and keyword are not specified by the user
+  * 1c1. System shows an error message
+
+    Use case resumes from step 1
+
+#### Use case UC3: Delete a student
+{:.no_toc}
 
 **MSS**
 
 1.  User requests to list students
-
 2.  System shows a list of students
-
 3.  User requests to delete a specific student in the list by their index from the list
-
 4.  System deletes the student
 
     Use case ends
 
 **Extensions**
 
+* 1a. User requests to find a specific set of students based on a set of criteria
+  * 1a1. System shows a list of students which matches the criteria input by the user
+  * 1a2. User requests to delete a specific student in the list by their index from the list
+  * 1a3. System deletes the student
+
+    Use case ends
+
 * 2a. The list is empty
 
   Use case ends
 
 * 3a. The given index is invalid
+  * 3a1. System shows an error message
 
-    * 3a1. System shows an error message
+    Use case resumes at step 2
 
-      Use case resumes at step 2
-
-**Use case UC3: List student(s)**
+#### Use case UC4: List student(s)
+{:.no_toc}
 
 **MSS**
-1. User requests to list all the students.
-2. System shows the list of all students.
 
-Use case ends.
+1.  User requests to list all the students.
+2.  System shows the list of all students.
+
+    Use case ends.
 
 **Extensions**
+
 * 1a. Additional parameters are added behind `list`.
   * 1a1. System shows an error message.
 
-  Use case ends.
+    Use case ends.
 
-**Use case UC4: Update remarks**
+#### Use case UC5: Update remarks
+{:.no_toc}
 
 **MSS**
+
 1. User requests to list students
 2. System shows a list of students
 3. User requests to edit a student's remarks of a specific student in the list by their index from the list
@@ -723,20 +801,58 @@ Use case ends.
 6. User can exit writing the remarks at any time
 7. System saves the remarks
 
-Use case ends
+   Use case ends
 
 **Extensions**
 
 * 2a. The list is empty
 
-Use case ends
+  Use case ends
 
 * 3a. The given index is invalid
-    * 3a1. System shows an error message
+  * 3a1. System shows an error message
 
-  Use case resumes at step 2
+    Use case resumes at step 2
 
-*{More to be added}*
+#### Use case UC6: Edit particulars
+{:.no_toc}
+
+**MSS**
+
+1. User requests to edit a student's particulars based on the list displayed
+2. System replaces the specified fields with the new details
+
+   Use case ends
+
+**Extensions**
+
+* 1a. The field to edit is not specified
+  * 1a1. System shows an error message
+
+    Use case resumes from step 1
+
+* 1b. The index is given is invalid
+  * 1b1. System shows an error message
+
+    Use case resumes from step 1
+
+* 1c. The field is specified but the details are empty
+  * 1c1. System deletes the information in the specified field
+
+    Use case ends
+
+#### Use case UC7: Exiting the application
+{:.no_toc}
+
+**MSS**
+
+1. User requests to exit the application
+2. System saves all data into a local file
+3. System exits from the application
+
+   Use case ends
+
+[↑ Back to top](#table-of-contents)
 
 ### Non-Functional Requirements
 
@@ -751,12 +867,16 @@ Use case ends
 
 *{More to be added}*
 
+[↑ Back to top](#table-of-contents)
+
 ### Glossary
 
 * **Tutors**: (NUS) Teaching Assistants.
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Save FIle**: The file containing all the data (ie. Entries of student information) inputted by the user saved locally on the user's own computer.
+
+[↑ Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -773,33 +893,34 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
-   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+  1. Download the jar file and copy into an empty folder
+  2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 2. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-   2. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+  1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+  2. Re-launch the app by double-clicking the jar file.<br>
+     Expected: The most recent window size and location is retained.
 
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+  1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   2. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+  2. Test case: `delete 1`<br>
+     Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   3. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+  3. Test case: `delete 0`<br>
+     Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-   
+  4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+     Expected: Similar to previous.
+
+[↑ Back to top](#table-of-contents)
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+  1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
