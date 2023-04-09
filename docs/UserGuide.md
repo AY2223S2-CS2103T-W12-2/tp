@@ -467,8 +467,8 @@ The `find` command allows you to zoom in on an entry that matches **all** your `
 
 For more details and examples on prefixes, please refer to the [Prefix Summary](#prefix-summary)!
 
-<div markdown="span" class="alert alert-success">:bulb: **Tip:** 
-
+<div markdown="block" class="alert alert-success">
+:bulb: **Tip:**
 * Using `find` without any `PREFIX`s has the same outcome as `list`! TeachMeSenpai will simply display the list of all your students.
 * Using `filter` without any `PREFIX`s will result in an empty list!
 </div>
